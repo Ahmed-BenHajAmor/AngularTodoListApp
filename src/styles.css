@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;    
+    list-style: none;
+    text-decoration: none;
+}
+
+app-root{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+
+body{
+    font-size: 22px;
+    min-height: 100vh;
+    background-color: #A18AFF;
+    
+}
+

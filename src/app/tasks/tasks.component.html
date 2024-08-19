@@ -1,0 +1,11 @@
+<div class="tasks-list">
+    <div *ngFor="let todo of todosList" class="todo-container">
+        <p class="flexiable todo-text">{{todo.text}}</p>
+
+        <p class="todo-time">{{todo.time}}</p>
+
+        <span (click)="changeDoneStatus(todo.id)" class="material-icons done-icon" [ngStyle]="{color: todo.done ? 'green' : 'grey'}">check_circle</span>
+        
+        <span (click)="removeTodo(todo.id)" class="material-icons delete-todo">close</span> 
+    </div>
+</div>

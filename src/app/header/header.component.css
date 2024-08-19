@@ -1,0 +1,47 @@
+
+
+
+.input-field{
+    border-radius: 10px;
+    background-color: #F9F8FD;
+    padding: 0px 10px ;
+    display: flex;
+    align-items: center;
+    height: 50px;
+
+}
+
+.flexible-input {
+    flex: 1; 
+    font-size: 21px;
+    color: rgb(61, 61, 61);
+}
+
+.input-field > input{
+    border: 0;
+    outline: none;
+    width: auto;
+    height: 100%;
+}
+
+.add-btn{
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+.clear-btn{
+    background-color: #D9534F;
+    border: 0;
+    padding: 10px 12px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 15px;
+}

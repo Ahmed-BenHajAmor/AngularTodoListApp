@@ -1,0 +1,48 @@
+
+
+.tasks-list{
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    gap: 15px;
+}
+
+.todo-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #F9F8FD;
+    border-radius: 7px;
+    font-size: 17px;
+    color: #787788;
+}
+
+.done-icon{
+    cursor: pointer;
+    margin-left: 19px;
+}
+
+.flexiable{
+    flex: 1;
+    
+}
+
+.todo-text{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+}
+
+
+.delete-todo{
+    cursor: pointer;
+    margin-left: 19px 
+}
+
+.todo-time{
+    margin-left: 19px;
+    display: flex;
+    align-items: center;
+}
