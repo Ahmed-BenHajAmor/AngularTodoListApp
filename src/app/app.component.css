@@ -11,6 +11,13 @@
     color: #ffffff;
 }
 
+.tile > h3{
+    font-weight: 600;font-size: 22px
+}
+.tile span{
+    font-size: 35px; font-weight: 1000; letter-spacing: 2px;
+}
+
 @media screen and (max-width: 1200px) {
 
     .app-container{
@@ -38,4 +45,13 @@
     .app-container{
        padding: 3rem 1rem;
     }
+
+    .tile > h3{
+        font-size: 20px;
+    }
+    .tile  span{
+        font-size: 30px;
+    }
 }
+
+

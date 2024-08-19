@@ -46,3 +46,25 @@
     display: flex;
     align-items: center;
 }
+
+.todo-options{
+    display: flex;
+}
+
+@media screen and (max-width: 900px) {
+
+    .todo-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:20px;
+    }
+}
+@media screen and (max-width: 500px) {
+
+    .tasks-list{
+        padding: 0 5px;
+       
+    }
+}

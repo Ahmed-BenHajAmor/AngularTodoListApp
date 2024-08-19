@@ -2,10 +2,13 @@
 
 <form (submit)="addTodo()" class="input-field">
     <input class="flexible-input" name="todo-text" type="text" [(ngModel)] = "todoText">
+    <input class="todo-date" name="todo-time" type="date" [(ngModel)] = "todoDate">
     <input name="todo-time" type="time" [(ngModel)] = "todoTime">
     <button type="submit" class="add-btn">
         <i class="material-icons">add</i>
     </button>
+
+    
 </form>
 
 <button (click)="clearTodos()" class="clear-btn">clear all</button>

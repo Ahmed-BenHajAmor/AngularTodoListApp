@@ -8,11 +8,13 @@
     display: flex;
     align-items: center;
     height: 50px;
+    max-width: 100%;
 
 }
 
 .flexible-input {
-    flex: 1; 
+    flex-grow: 1;
+    width: 0;
     font-size: 21px;
     color: rgb(61, 61, 61);
 }
@@ -20,7 +22,6 @@
 .input-field > input{
     border: 0;
     outline: none;
-    width: auto;
     height: 100%;
 }
 
@@ -44,4 +45,26 @@
     color: #FFFFFF;
     cursor: pointer;
     font-size: 15px;
+}
+
+.todo-date{
+    margin-right: 10px;
+}
+
+
+
+@media screen and (max-width: 800px){
+    input[type="date"] {
+        color: transparent;
+        width: 20px
+    }
+    
+    input[type="time"]{
+        color: transparent;
+        width: 30px;
+        
+    }
+    .todo-date{
+        margin-right: 0;
+    }
 }

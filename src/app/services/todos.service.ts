@@ -5,6 +5,7 @@ export interface Todo {
   id: string,
   text: string,
   time: string,
+  date : string,
   done: boolean,
 }
 
@@ -36,6 +37,7 @@ export class TodosService {
   addTodo(todo: Todo) : void{
     if(todo.text.length > 1 && todo.time)
       this.todosList.push(todo);
+      this.todosList.sort((a, b)=> new Date(`${a.date} ${a.time}`) > new Date(`${b.date} ${b.time}`) ? 1 : -1)
       this.saveTodos()
   }
 
