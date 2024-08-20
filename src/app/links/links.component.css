@@ -1,0 +1,38 @@
+.links-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+
+}
+
+.link-container > a{
+    color: #8263fd;
+}
+
+.link-container{
+    background-color: #FFFFFF;
+    width: 25%;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .link-container{
+        width: 40%
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .links-container{
+        display: flex;
+        flex-direction : column
+    }
+
+    .link-container{
+        width: 70%
+    }
+}

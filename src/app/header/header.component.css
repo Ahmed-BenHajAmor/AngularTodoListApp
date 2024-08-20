@@ -39,18 +39,26 @@
     background-color: #D9534F;
     border: 0;
     padding: 10px 12px;
-    margin-top: 15px;
     border-radius: 5px;
     font-weight: bold;
     color: #FFFFFF;
     cursor: pointer;
     font-size: 15px;
+    margin-top: 5px;
 }
 
 .todo-date{
     margin-right: 10px;
 }
 
+.error-msg{
+    color: red;
+    font-weight: bold;
+    text-align: end;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-right: 15px;
+}
 
 
 @media screen and (max-width: 800px){

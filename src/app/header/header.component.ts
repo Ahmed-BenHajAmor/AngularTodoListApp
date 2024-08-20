@@ -3,11 +3,12 @@ import { TodosService } from '../services/todos.service';
 import { FormsModule } from '@angular/forms';
 import { v4  } from 'uuid';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule, MatDatepickerModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -16,6 +17,7 @@ export class HeaderComponent {
   todoText : string = "";
   todoTime : string = "";
   todoDate : string = "";
+  showError : boolean = false;
 
   constructor(private todosService : TodosService) {}
 
@@ -31,14 +33,12 @@ export class HeaderComponent {
         
       })
       this.todoText = "";
-    }else if(this.todoText.length === 0){
-      alert("Empty Todos are not valid !!!")
-      
-    }else if(!this.todoDate){
-      alert("Date is required !!!")
-      
+      this.showError = false;
+      this.todoTime = "";
+      this.todoDate = "";
+
     }else{
-      alert('Time is required !!!')
+      this.showError = true;
     }
     
   }

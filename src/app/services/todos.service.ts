@@ -30,16 +30,28 @@ export class TodosService {
       this.todosList = JSON.parse(storedTodos).map((todo: any) => ({
         ...todo,
         creationDate: new Date(todo.creationDate),
-      }));
+      })).sort((a: Todo, b : Todo)=> new Date(`${a.date} ${a.time}`) > new Date(`${b.date} ${b.time}`) ? 1 : -1);
+      
+    
     }
   }
 
-  addTodo(todo: Todo) : void{
-    if(todo.text.length > 1 && todo.time)
-      this.todosList.push(todo);
-      this.todosList.sort((a, b)=> new Date(`${a.date} ${a.time}`) > new Date(`${b.date} ${b.time}`) ? 1 : -1)
-      this.saveTodos()
+  addTodo(todo : Todo){
+    const index : number = this.todosList.findIndex(el => new Date(`${el.date} ${el.time}`) > new Date(`${todo.date} ${todo.time}`))
+    if(index === -1){
+      this.todosList.splice(this.todosList.length, 0, todo);
+    }else
+      this.todosList.splice(index, 0, todo);
+    this.saveTodos()
   }
+
+
+  // addTodo(todo: Todo) : void{
+  //   if(todo.text.length > 1 && todo.time)
+  //     this.todosList.push(todo);
+  //     this.todosList.sort((a, b)=> new Date(`${a.date} ${a.time}`) > new Date(`${b.date} ${b.time}`) ? 1 : -1)
+  //     this.saveTodos()
+  // }
 
   private findTodoIndex(todoID: string) : number{
     const todoIndex = this.todosList.findIndex(todo => todo.id === todoID);

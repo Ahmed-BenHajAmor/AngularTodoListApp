@@ -10,5 +10,6 @@
 
     
 </form>
+<p *ngIf="showError" class="error-msg">Task, date and time are required</p>
 
 <button (click)="clearTodos()" class="clear-btn">clear all</button>
