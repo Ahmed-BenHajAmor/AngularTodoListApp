@@ -1,7 +1,7 @@
 <div class="tasks-list">
     <div *ngFor="let todo of todosList">
 
-        <div *ngIf="(getRouter().url === '/tasks' && !todo.done) || (getRouter().url === '/done' && todo.done)" class="todo-container">
+        <div *ngIf="(getRouter().url === '/tasks' && !todo.done.status) || (getRouter().url === '/done' && todo.done.status)" class="todo-container">
             <mat-icon *ngIf="checkTaskInPast(todo)" style="margin-right: 10px" color="warn" [matTooltip]="warningMsg">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 21H23L12 2L1 21Z" fill="#FFC107"/>
@@ -10,11 +10,12 @@
               
             </mat-icon>
 
-            <p class="flexiable todo-text" [ngStyle]="{'text-decoration': todo.done ? 'line-through' : ''}">{{todo.text}}</p>
+            <p class="flexiable todo-text" [ngStyle]="{'text-decoration': todo.done.status? 'line-through' : ''}">{{todo.text}}</p>
             <div class="todo-options">
+                <p class="todo-time" *ngIf="todo.done.status">{{getDateAndTime(todo.done.date)}}</p>
                 <p class="todo-time">{{todo.date}}, {{todo.time}}</p>
 
-                <span (click)="changeDoneStatus(todo.id)" class="material-icons done-icon" [ngStyle]="{color: todo.done ? 'green' : 'grey'}">check_circle</span>
+                <span (click)="changeDoneStatus(todo.id)" class="material-icons done-icon" [ngStyle]="{color: todo.done.status ? 'green' : 'grey'}">check_circle</span>
                 
                 <span (click)="removeTodo(todo.id)" class="material-icons delete-todo">close</span> 
             </div>
