@@ -4,12 +4,10 @@
     align-items: center;
     gap: 15px;
     margin-bottom: 18px;
-
-}
-
-.link-container > a{
     color: #8263fd;
+
 }
+
 
 .link-container{
     background-color: #FFFFFF;
@@ -20,6 +18,9 @@
     cursor: pointer;
 }
 
+.link-container {
+    color: inherit;
+  }
 @media screen and (max-width: 600px) {
     .link-container{
         width: 40%
