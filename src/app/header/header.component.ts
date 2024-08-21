@@ -29,7 +29,10 @@ export class HeaderComponent {
         text: this.todoText,
         time: this.todoTime,
         date: this.todoDate,
-        done: false
+        done: {
+          status: false,
+          date: ""
+        }
         
       })
       this.todoText = "";
