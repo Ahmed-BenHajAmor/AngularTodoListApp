@@ -6,7 +6,10 @@ export interface Todo {
   text: string,
   time: string,
   date : string,
-  done: boolean,
+  done: {
+    status: boolean,
+    date: string
+  },
 }
 
 @Injectable({
@@ -37,6 +40,8 @@ export class TodosService {
   }
 
   addTodo(todo : Todo){
+    console.log(this.todosList);
+    
     const index : number = this.todosList.findIndex(el => new Date(`${el.date} ${el.time}`) > new Date(`${todo.date} ${todo.time}`))
     if(index === -1){
       this.todosList.splice(this.todosList.length, 0, todo);
@@ -72,7 +77,9 @@ export class TodosService {
   changeDoneStatus(todoID: string): void{
     const todoIndex = this.findTodoIndex(todoID);
     if(todoIndex !== -1){
-      this.todosList[todoIndex].done = !this.todosList[todoIndex].done;
+      this.todosList[todoIndex].done.status = !this.todosList[todoIndex].done.status;
+      if(this.todosList[todoIndex].done.status)
+        this.todosList[todoIndex].done.date = new Date().toString()
     }
     this.saveTodos()
   }
