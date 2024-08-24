@@ -5,7 +5,7 @@ export const routes: Routes = [
     // Redirect the empty path to '/tasks' as the default route
     { path: '', redirectTo: '/tasks', pathMatch: 'full' },
     
-    // Route for displaying tasks
+    // Route for displaying uncompleted tasks
     { path: 'tasks', component: TasksComponent },
     
     // Route for displaying completed tasks
