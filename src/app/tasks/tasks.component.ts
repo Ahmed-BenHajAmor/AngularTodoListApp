@@ -14,8 +14,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent {
+  //this component display a list of tasks : if we are in the /tasks route it displays the uncompleted tasks 
+  // and if we are visiting /done route it displays the done tasks
   todosList! : Todo[]
-  warningMsg : string = "Warning: The task deadline exceeded "
+  warningMsg : string = "Warning: The task deadline exceeded"
   constructor(private todosService : TodosService, private router: Router) {}
 
   getRouter(){
@@ -58,8 +60,9 @@ export class TasksComponent {
     });
   }
 
-  checkTaskInPast(todo : Todo){
-    return new Date(`${todo.date} ${todo.time}`) < new Date()
+  displayWarning(todo : Todo){
+    
+    return new Date(`${todo.date} ${todo.time}`) < new Date() && !todo.done.status
   }
 
   getDateAndTime(date: string){

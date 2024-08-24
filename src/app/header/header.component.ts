@@ -13,7 +13,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+  // Variables for binding form inputs
   todoText : string = "";
   todoTime : string = "";
   todoDate : string = "";
@@ -21,9 +21,10 @@ export class HeaderComponent {
 
   constructor(private todosService : TodosService) {}
 
-  addTodo(){    
+  addTodo(){   
+    // Validate that all fields are filled out 
     if(this.todoText.length !== 0 && this.todoTime && this.todoDate){
-
+      // Add the new todo item via TodosService
       this.todosService.addTodo({
         id: v4(),
         text: this.todoText,
@@ -35,21 +36,21 @@ export class HeaderComponent {
         }
         
       })
+      // Clear input fields and error message after adding the todo
       this.todoText = "";
       this.showError = false;
       this.todoTime = "";
       this.todoDate = "";
 
     }else{
+      // Show error message if any required field is missing
       this.showError = true;
     }
     
   }
 
+  // Method to clear all todos
   clearTodos(){
-    
-   
     this.todosService.clearTodos()
-    
   }
 }

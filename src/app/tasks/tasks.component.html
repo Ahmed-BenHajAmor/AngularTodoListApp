@@ -2,19 +2,24 @@
     <div *ngFor="let todo of todosList">
 
         <div *ngIf="(getRouter().url === '/tasks' && !todo.done.status) || (getRouter().url === '/done' && todo.done.status)" class="todo-container">
-            <mat-icon *ngIf="checkTaskInPast(todo)" style="margin-right: 10px" color="warn" [matTooltip]="warningMsg">
+            <!-- Warning icon: displays when the user exceeds the deadline -->
+            <mat-icon *ngIf="displayWarning(todo)" style="margin-right: 10px" color="warn" [matTooltip]="warningMsg">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 21H23L12 2L1 21Z" fill="#FFC107"/>
-                <path d="M12 16C11.45 16 11 16.45 11 17C11 17.55 11.45 18 12 18C12.55 18 13 17.55 13 17C13 16.45 12.55 16 12 16ZM11 14H13V9H11V14Z" fill="black"/>
-              </svg>
-              
+                    <path d="M1 21H23L12 2L1 21Z" fill="#FFC107"/>
+                    <path d="M12 16C11.45 16 11 16.45 11 17C11 17.55 11.45 18 12 18C12.55 18 13 17.55 13 17C13 16.45 12.55 16 12 16ZM11 14H13V9H11V14Z" fill="black"/>
+                </svg>
             </mat-icon>
-
+            <!--the task text-->
             <p class="flexiable todo-text" [ngStyle]="{'text-decoration': todo.done.status? 'line-through' : ''}">{{todo.text}}</p>
+            
             <div class="todo-options">
+                <!-- If the task is completed, the completion date is displayed -->
                 <p class="todo-time" *ngIf="todo.done.status">{{getDateAndTime(todo.done.date)}}</p>
+
+                <!--task deadline-->
                 <p class="todo-time">{{todo.date}}, {{todo.time}}</p>
 
+                <!--done, and delete buttons -->
                 <span (click)="changeDoneStatus(todo.id)" class="material-icons done-icon" [ngStyle]="{color: todo.done.status ? 'green' : 'grey'}">check_circle</span>
                 
                 <span (click)="removeTodo(todo.id)" class="material-icons delete-todo">close</span> 

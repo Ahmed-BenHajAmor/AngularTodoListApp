@@ -12,6 +12,16 @@ export interface Todo {
   },
 }
 
+/**
+ * Service for managing todo items in the application.
+ * 
+ * This service handles all operations related to todos, including 
+ * adding, removing, and retrieving todo items. It persists 
+ * the todo list in the browser's localStorage to maintain state between 
+ * sessions. The todos are sorted by their date and time to ensure they 
+ * are displayed in chronological order.
+ */
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,11 +33,12 @@ export class TodosService {
     this.loadTodos()
   }
 
-  private saveTodos(): void {
+  private saveTodos(): void { //save todosList in the localStorage
     localStorage.setItem(this.todosKey, JSON.stringify(this.todosList));
   }
 
-  private loadTodos(): void {
+  private loadTodos(): void { // Retrieve data from localStorage
+
     const storedTodos = localStorage.getItem(this.todosKey);
     if (storedTodos) {
       this.todosList = JSON.parse(storedTodos).map((todo: any) => ({
@@ -39,6 +50,7 @@ export class TodosService {
     }
   }
 
+  // This algorithm ensures that an element is added to the sorted list with O(n) time complexity.
   addTodo(todo : Todo){
     console.log(this.todosList);
     
@@ -50,6 +62,8 @@ export class TodosService {
     this.saveTodos()
   }
 
+
+  // This sorting method is more time-consuming; it has O(n log n) complexity.
 
   // addTodo(todo: Todo) : void{
   //   if(todo.text.length > 1 && todo.time)
@@ -74,7 +88,7 @@ export class TodosService {
 
   }
 
-  changeDoneStatus(todoID: string): void{
+  changeDoneStatus(todoID: string): void{ //done or undone task
     const todoIndex = this.findTodoIndex(todoID);
     if(todoIndex !== -1){
       this.todosList[todoIndex].done.status = !this.todosList[todoIndex].done.status;
